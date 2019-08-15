@@ -12,13 +12,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/', function(req, res) {
+app.get('/', (req, res) => {
   res.send({
     status: true,
     message: "Welcome to the app"
   });
 });
 
-app.listen(PORT, function(req, res) {
+app.listen(PORT, (req, res) => {
   console.log(`App running on localhost: ${PORT}`);
 });
