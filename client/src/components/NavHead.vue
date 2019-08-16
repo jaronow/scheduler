@@ -9,9 +9,9 @@
       <b-navbar-nav>
         <b-nav-item to="#">Services</b-nav-item>
         <b-nav-item to="#">People</b-nav-item>
+        <b-nav-item to="about">About</b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-auto">
-        <b-nav-item to="#">About</b-nav-item>
         <b-nav-item-dropdown right>
           <template slot="button-content"><em>User</em></template>
           <b-dropdown-item to="#">Profile</b-dropdown-item>
