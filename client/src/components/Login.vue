@@ -1,20 +1,14 @@
 <template>
-  <div class="login">
-    <label for="email">Email:</label>
-    <input
-    v-model="user.email"
-    type="email"
-    name="email"
-    />
+  <div class="login-container">
+    <b-input-group prepend="Email:" class="mt-3 w-25 input">
+      <b-form-input type="email" v-model="user.email"></b-form-input>
+    </b-input-group>
     <br>
-    <label for="password">Password:</label>
-    <input
-    v-model="user.password"
-    type="password"
-    name="password"
-    />
+    <b-input-group prepend="Password:" class="mt-3 w-25 input">
+      <b-form-input type="password" v-model="user.password"></b-form-input>
+    </b-input-group>
     <br>
-    <button type="button" name="button" @click="login">Log In</button>
+    <b-button variant="outline-primary" @click="login">Log In</b-button>
   </div>
 </template>
 
@@ -40,4 +34,7 @@ export default {
 </script>
 
 <style scoped>
+.input {
+  margin-left: 37%
+}
 </style>

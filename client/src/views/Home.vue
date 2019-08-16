@@ -1,17 +1,20 @@
 <template>
-  <div class="home">
+  <div class="home-container">
+    <NavHead/>
     <h1>Home Page</h1>
     <Login/>
   </div>
 </template>
 
 <script>
-import Login from '@/components/Login.vue'
+import NavHead from '@/components/NavHead'
+import Login from '@/components/Login'
 
 export default {
   name: "home",
   components: {
-    Login
+    Login,
+    NavHead
   }
 };
 </script>
