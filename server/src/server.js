@@ -19,6 +19,13 @@ app.get('/', (req, res) => {
   });
 });
 
+app.post('/register', (req, res) => {
+  res.send({
+    status: true,
+    message: `User ${req.body.email} created!`
+  });
+});
+
 app.listen(PORT, (req, res) => {
   console.log(`App running on localhost: ${PORT}`);
 });
