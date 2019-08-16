@@ -12,4 +12,4 @@ module.exports = (app) => {
       message: `User, ${req.body.email}, created!`
     });
   });
-}
+};
