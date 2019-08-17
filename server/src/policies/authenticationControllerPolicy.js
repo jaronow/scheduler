@@ -25,7 +25,6 @@ module.exports = {
         break;
         default: res.status(400).send({
           error: 'Something went wrong, try again or contact us'
-          break;
         })
       }
     } else {
