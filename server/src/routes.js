@@ -1,15 +1,6 @@
-module.exports = (app) => {
-  app.post('/login', (req, res) => {
-    res.send({
-      status: true,
-      message: `${req.body.email} logged in`
-    });
-  });
+const authentication = require('./controllers/authenticationController');
 
-  app.post('/register', (req, res) => {
-    res.send({
-      status: true,
-      message: `User, ${req.body.email}, created!`
-    });
-  });
+module.exports = (app) => {
+  app.post('/login', authentication.login);
+  app.post('/register', authentication.register);
 };
