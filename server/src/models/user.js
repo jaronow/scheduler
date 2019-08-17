@@ -8,8 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     admin: {
-      type: DataTypes.BOOLEAN,
-      
+      type: DataTypes.BOOLEAN
     }
   });
   return User
