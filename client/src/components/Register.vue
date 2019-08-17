@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import authentication from '@/services/authentication'
+
 export default {
   name: 'register',
   data() {
@@ -44,6 +46,6 @@ export default {
 
 <style scoped>
 .input {
-  margin-left: 37%
+  margin-left: 37%;
 }
 </style>

@@ -35,6 +35,6 @@ export default {
 
 <style scoped>
 .input {
-  margin-left: 37%
+  margin-left: 37%;
 }
 </style>

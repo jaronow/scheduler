@@ -18,10 +18,10 @@
             <b-dropdown-item to="#">Calendar</b-dropdown-item>
             <b-dropdown-item to="#">Sign Out</b-dropdown-item>
           </b-nav-item-dropdown>
-        </b-navbar-nav class="ml-auto">
-        <b-navbar-nav>
-          <b-nav-item-dropdown right v-else>
-            <template slot="content">Login</template>
+        </b-navbar-nav >
+        <b-navbar-nav class="ml-auto">
+          <b-nav-item-dropdown right v-if="!loggedIn">
+            <template slot="button-content">Login</template>
             <b-dropdown-item><Login/></b-dropdown-item>
           </b-nav-item-dropdown>
         </b-navbar-nav>
@@ -40,6 +40,7 @@ export default {
   },
   data() {
     return {
+      loggedIn: false
     }
   }
 }
