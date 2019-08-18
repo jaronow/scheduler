@@ -3,6 +3,8 @@ const Joi = require('joi');
 module.exports = {
   register (req, res, next) {
     const schema = {
+      name: Joi.string(),
+      phone: Joi.number().min(10).max(10).positive(),
       email: Joi.string().email({ minDomainSegments: 2 }),
       password: Joi.string().regex(/^[a-zA-Z0-9]{8,32}$/),
       admin: Joi.boolean().insensitive()

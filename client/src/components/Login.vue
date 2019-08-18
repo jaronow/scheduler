@@ -1,14 +1,32 @@
 <template>
   <div class="login-container">
-    <b-input-group prepend="Email:" class="mt-3 w-25 input">
-      <b-form-input type="email" v-model="user.email"></b-form-input>
-    </b-input-group>
-    <br>
-    <b-input-group prepend="Password:" class="mt-3 w-25 input">
-      <b-form-input type="password" v-model="user.password"></b-form-input>
-    </b-input-group>
-    <br>
-    <b-button variant="outline-primary" @click="login">Log In</b-button>
+    <b-dropdown id="login-form" text="Log In" ref="user_login" class="m-2" variant="info" no-caret right>
+      <b-dropdown-form>
+        <b-form-group label="Email" label-for="email" @submit.stop.prevent>
+          <b-form-input
+          id="email"
+          type="email"
+          v-model="userLogin.email"
+          size="sm"
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-group label="Password" label-for="password">
+          <b-form-input
+          id="password"
+          v-model="userLogin.password"
+          type="password"
+          size="sm"
+          ></b-form-input>
+        </b-form-group>
+
+        <b-form-checkbox class="mb-3">Remember me</b-form-checkbox>
+        <b-button variant="outline-primary" size="sm" @click="onClick">Sign In</b-button>
+      </b-dropdown-form>
+      <b-dropdown-divider></b-dropdown-divider>
+      <b-dropdown-item to="register">New around here? Sign up</b-dropdown-item>
+      <b-dropdown-item>Forgot/Reset Password?</b-dropdown-item>
+    </b-dropdown>
   </div>
 </template>
 
@@ -19,7 +37,7 @@ export default {
   name: 'login',
   data () {
     return {
-      user: {
+      userLogin: {
         email: '',
         password: ''
       }
@@ -27,14 +45,14 @@ export default {
   },
   methods: {
     async login() {
-      await authentication.login(this.user)
+      await authentication.login(this.userLogin)
+    },
+    onClick() {
+      this.$refs.user_login.hide(true)
     }
   }
 }
 </script>
 
 <style scoped>
-.input {
-  margin-left: 37%;
-}
 </style>

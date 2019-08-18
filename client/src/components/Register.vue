@@ -2,12 +2,20 @@
   <div class="register-container">
     <h1>Register New User</h1>
     <b-form @submit.prevent="register">
+      <b-input-group prepend="Name:" class="mt-3 w-25 input">
+        <b-form-input type="text" v-model="createUser.name"></b-form-input>
+      </b-input-group>
+      <br>
+      <b-input-group prepend="Phone:" class="mt-3 w-25 input">
+        <b-form-input type="tel" v-model="createUser.phone"></b-form-input>
+      </b-input-group>
+      <br>
     <b-input-group prepend="Email:" class="mt-3 w-25 input">
-      <b-form-input type="email" v-model="user.email"></b-form-input>
+      <b-form-input type="email" v-model="createUser.email"></b-form-input>
     </b-input-group>
     <br>
     <b-input-group prepend="Password:" class="mt-3 w-25 input">
-      <b-form-input type="password" v-model="user.password"></b-form-input>
+      <b-form-input type="password" v-model="createUser.password"></b-form-input>
     </b-input-group>
     <br>
     <b-input-group prepend="Confirm Password:" class="mt-3 confirm">
@@ -17,7 +25,7 @@
     <b-form-checkbox
     id="admin"
     name="admin"
-    v-model="user.admin"
+    v-model="createUser.admin"
     value="true"
     unchecked-value="false"
     >
@@ -32,10 +40,12 @@
 import authentication from '@/services/authentication'
 
 export default {
-  name: 'register',
+  name: 'registration',
   data() {
     return {
-      user: {
+      createUser: {
+        name: '',
+        phone: '',
         email: '',
         password: '',
         admin: false
