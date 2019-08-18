@@ -2,7 +2,7 @@
   <div class="login-container">
     <b-dropdown id="login-form" text="Log In" ref="user_login" class="m-2" variant="info" no-caret right>
       <b-dropdown-form>
-        <b-form-group label="Email" label-for="email" @submit.stop.prevent>
+        <b-form-group label="Email:" label-for="email" @submit.stop.prevent>
           <b-form-input
           id="email"
           type="email"
@@ -11,7 +11,7 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-group label="Password" label-for="password">
+        <b-form-group label="Password:" label-for="password">
           <b-form-input
           id="password"
           v-model="userLogin.password"
@@ -20,7 +20,7 @@
           ></b-form-input>
         </b-form-group>
 
-        <b-form-checkbox class="mb-3">Remember me</b-form-checkbox>
+        <b-form-checkbox class="mb-3 checkbox" switch>Remember me</b-form-checkbox>
         <b-button variant="outline-primary" size="sm" @click="onClick">Sign In</b-button>
       </b-dropdown-form>
       <b-dropdown-divider></b-dropdown-divider>
@@ -55,4 +55,10 @@ export default {
 </script>
 
 <style scoped>
+.checkbox {
+  margin-left: 12%;
+}
+.btn {
+  margin-left: 35%;
+}
 </style>

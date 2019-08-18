@@ -1,7 +1,7 @@
 <template>
   <div class="nav-container">
     <b-navbar toggleable="lg" type="dark" variant="info">
-      <b-navbar-brand tag="h1">
+      <b-navbar-brand to="/">
         Company Name
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -9,7 +9,7 @@
         <b-navbar-nav>
           <b-nav-item to="#">Services</b-nav-item>
           <b-nav-item to="#">People</b-nav-item>
-          <b-nav-item to=about>About</b-nav-item>
+          <b-nav-item to="about">About</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-item-dropdown right no-caret v-if="loggedIn">
