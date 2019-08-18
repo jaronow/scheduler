@@ -50,12 +50,17 @@ export default {
         password: '',
         admin: false
       },
-      confirm_password: ''
+      confirm_password: '',
+      registerError: ''
     }
   },
   methods: {
     validate() {
       if (this.createUser.password !== this.confirm_password) {
+        this.registerError = "Passwords DO NOT match"
+        return false
+      } else if (this.createUser.phone.length !== 10) {
+        this.registerError = "Not valid phone #"
         return false
       } else {
         return true
@@ -74,7 +79,7 @@ export default {
           alert(err.response.data.message)
         })
       } else {
-        alert("Passwords DO NOT Match!!!")
+        alert(this.registerError)
       }
     }
   }
