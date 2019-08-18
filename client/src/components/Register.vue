@@ -2,25 +2,25 @@
   <div class="register-container">
     <h1>Register New User</h1>
     <b-form @submit.prevent="register">
-      <b-input-group prepend="Name:" class="mt-3 w-25 input">
+      <b-form-group label="Name:" class="mt-3 w-25 input">
         <b-form-input type="text" v-model="createUser.name" required></b-form-input>
-      </b-input-group>
+      </b-form-group>
       <br>
-      <b-input-group prepend="Phone:" class="mt-3 w-25 input">
-        <b-form-input type="tel" v-model="createUser.phone"></b-form-input>
-      </b-input-group>
+      <b-form-group label="Phone:" description="We don't share phone #'s. This is soley for contacting you'" class="mt-3 w-25 input">
+        <b-form-input type="tel" placeholder="Leave blank if you want" v-model="createUser.phone"></b-form-input>
+      </b-form-group>
       <br>
-    <b-input-group prepend="Email:" class="mt-3 w-25 input">
+    <b-form-group label="Email:" description="We don't share email address" class="mt-3 w-25 input">
       <b-form-input type="email" v-model="createUser.email" required></b-form-input>
-    </b-input-group>
+    </b-form-group>
     <br>
-    <b-input-group prepend="Password:" class="mt-3 w-25 input">
+    <b-form-group label="Password:" class="mt-3 w-25 input">
       <b-form-input type="password" v-model="createUser.password" required></b-form-input>
-    </b-input-group>
+    </b-form-group>
     <br>
-    <b-input-group prepend="Confirm Password:" class="mt-3 confirm">
+    <b-form-group label="Confirm Password:" class="mt-3 confirm">
       <b-form-input type="password" v-model="confirm_password" required></b-form-input>
-    </b-input-group>
+    </b-form-group>
     <br>
     <b-form-checkbox
     id="admin"
@@ -45,7 +45,7 @@ export default {
     return {
       createUser: {
         name: '',
-        phone: 0,
+        phone: '',
         email: '',
         password: '',
         admin: false
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     validate() {
-      if (this.user.password !== this.confirm_password) {
+      if (this.createUser.password !== this.confirm_password) {
         return false
       } else {
         return true
@@ -64,7 +64,8 @@ export default {
     async register() {
       let valid = this.validate()
       if (valid) {
-        await authentication.register(this.user).then(res => {
+        this.createUser.phone = parseInt(this.createUser.phone)
+        await authentication.register(this.createUser).then(res => {
           if (res.data.status === true) {
             localStorage.setItem('user', JSON.stringify(res.data.user))
             this.$router.push({name: 'home'})

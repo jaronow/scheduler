@@ -4,7 +4,7 @@ module.exports = {
   register (req, res, next) {
     const schema = {
       name: Joi.string(),
-      phone: Joi.number().max(10).positive(),
+      phone: Joi.number().max(9999999999).positive(),
       email: Joi.string().email({ minDomainSegments: 2 }),
       password: Joi.string().regex(/^[a-zA-Z0-9]{8,32}$/),
       admin: Joi.boolean().insensitive()
@@ -28,6 +28,7 @@ module.exports = {
           message: 'Something went wrong, try again or contact us'
         })
       }
+      console.log(error)
     } else {
       next()
     }
