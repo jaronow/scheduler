@@ -3,7 +3,7 @@
     <h1>Register New User</h1>
     <b-form @submit.prevent="register">
       <b-input-group prepend="Name:" class="mt-3 w-25 input">
-        <b-form-input type="text" v-model="createUser.name"></b-form-input>
+        <b-form-input type="text" v-model="createUser.name" required></b-form-input>
       </b-input-group>
       <br>
       <b-input-group prepend="Phone:" class="mt-3 w-25 input">
@@ -11,15 +11,15 @@
       </b-input-group>
       <br>
     <b-input-group prepend="Email:" class="mt-3 w-25 input">
-      <b-form-input type="email" v-model="createUser.email"></b-form-input>
+      <b-form-input type="email" v-model="createUser.email" required></b-form-input>
     </b-input-group>
     <br>
     <b-input-group prepend="Password:" class="mt-3 w-25 input">
-      <b-form-input type="password" v-model="createUser.password"></b-form-input>
+      <b-form-input type="password" v-model="createUser.password" required></b-form-input>
     </b-input-group>
     <br>
     <b-input-group prepend="Confirm Password:" class="mt-3 confirm">
-      <b-form-input type="password" v-model="confirm_password"></b-form-input>
+      <b-form-input type="password" v-model="confirm_password" required></b-form-input>
     </b-input-group>
     <br>
     <b-form-checkbox
@@ -45,7 +45,7 @@ export default {
     return {
       createUser: {
         name: '',
-        phone: '',
+        phone: 0,
         email: '',
         password: '',
         admin: false
