@@ -1,5 +1,7 @@
 <template>
   <div class="register-container">
+    <h1>Register New User</h1>
+    <b-form @submit.prevent="register">
     <b-input-group prepend="Email:" class="mt-3 w-25 input">
       <b-form-input type="email" v-model="user.email"></b-form-input>
     </b-input-group>
@@ -8,17 +10,21 @@
       <b-form-input type="password" v-model="user.password"></b-form-input>
     </b-input-group>
     <br>
+    <b-input-group prepend="Confirm Password:" class="mt-3 confirm">
+      <b-form-input type="password" v-model="confirm_password"></b-form-input>
+    </b-input-group>
+    <br>
     <b-form-checkbox
     id="admin"
     name="admin"
-    class="input"
     v-model="user.admin"
     value="true"
     unchecked-value="false"
     >
     Administrator Privilages
   </b-form-checkbox>
-    <b-button variant="outline-primary" @click="register">Register</b-button>
+    <b-button variant="outline-primary" type="submit">Register</b-button>
+  </b-form>
   </div>
 </template>
 
@@ -30,15 +36,35 @@ export default {
   data() {
     return {
       user: {
-        name: '',
         email: '',
+        password: '',
         admin: false
-      }
+      },
+      confirm_password: ''
     }
   },
   methods: {
+    validate() {
+      if (this.user.password !== this.confirm_password) {
+        return false
+      } else {
+        return true
+      }
+    },
     async register() {
-      await authentication.register(this.user)
+      let valid = this.validate()
+      if (valid) {
+        await authentication.register(this.user).then(res => {
+          if (res.data.status === true) {
+            localStorage.setItem('user', JSON.stringify(res.data.user))
+            this.$router.push({name: 'home'})
+          }
+        }).catch(err => {
+          alert(err.response.data.message)
+        })
+      } else {
+        alert("Passwords DO NOT Match!!!")
+      }
     }
   }
 }
@@ -47,5 +73,12 @@ export default {
 <style scoped>
 .input {
   margin-left: 37%;
+}
+.confirm {
+  width: 28%;
+  margin-left: 35%;
+}
+.btn {
+  margin-top: 2%;
 }
 </style>

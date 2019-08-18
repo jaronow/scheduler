@@ -1,8 +1,9 @@
 {
-  "name": "server",
+  "name": "express-server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "description": "all in scheduler app & webpage for business",
+  "main": "server.js",
   "scripts": {
     "start": "./node_modules/nodemon/bin/nodemon.js src/server.js --exec 'npm run lint && node'",
     "lint": "eslint \"**/*.js\""
