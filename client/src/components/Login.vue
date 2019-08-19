@@ -45,10 +45,17 @@ export default {
   },
   methods: {
     async login() {
-      await authentication.login(this.userLogin)
+      await authentication.login(this.userLogin).then(res => {
+        if (res.data.message === true) {
+          localStorage.setItem('user', JSON.stringify(res.data.user))
+        }
+      }).catch(err => {
+        alert(err.response.data.message)
+      })
     },
     onClick() {
       this.$refs.user_login.hide(true)
+      this.login()
     }
   }
 }
