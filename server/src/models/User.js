@@ -23,7 +23,8 @@ module.exports = (sequelize, DataTypes) => {
     admin: DataTypes.BOOLEAN
     }, {
     hooks: {
-      beforeCreate: hashPassword
+      beforeCreate: hashPassword,
+      beforeUpdate: hashPassword
     }
   })
   User.prototype.comparePassword = function (password) {
