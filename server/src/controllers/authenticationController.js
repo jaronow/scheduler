@@ -1,4 +1,12 @@
-const {User} = require('../models')
+const {User} = require('../models');
+const jwt = require('jsonwebtoken');
+const config = require('../config/config');
+
+function jwtSignUser (user) {
+  return jwt.sign(user, config.authentication.jwtSecret, {
+    expiresIn: "1hr"
+  })
+}
 
 module.exports = {
   async login (req, res) {
@@ -16,24 +24,31 @@ module.exports = {
           message: 'Incorrect login credentials'
         })
       }
+      let selectedUser = user[0]
+      let userPayload = {user: selectedUser}
+      let token = jwtSignUser(userPayload)
       return res.status(200).json({
         status: true,
-        user: user
+        user: user,
+        token: token
       })
     } catch (err) {
       res.status(500).json({
         status: false,
-        message: 'Oops, something went wrong, try again.',
-        error: err
+        message: 'Oops, our server had an issue, try again.'
       })
     }
   },
   async register (req, res) {
     try {
       const user = await User.create(req.body)
+      let selectedUser = user[0]
+      let userPayload = {user: selectedUser}
+      let token = jwtSignUser(userPayload)
       return res.json({
         status: true,
-        user: user
+        user: user,
+        token: token
       })
     } catch (err) {
       res.status(409).json({
