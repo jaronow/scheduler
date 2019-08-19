@@ -15,11 +15,11 @@
     </b-form-group>
     <br>
     <b-form-group label="Password:" class="mt-3 w-25 input">
-      <b-form-input type="password" v-model="createUser.password" required></b-form-input>
+      <b-form-input type="password" v-model="createUser.password" required autocomplete="off"></b-form-input>
     </b-form-group>
     <br>
     <b-form-group label="Confirm Password:" class="mt-3 confirm">
-      <b-form-input type="password" v-model="confirm_password" required></b-form-input>
+      <b-form-input type="password" v-model="confirm_password" required autocomplete="off"></b-form-input>
     </b-form-group>
     <br>
     <b-form-checkbox
