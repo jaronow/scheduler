@@ -15,6 +15,11 @@ export default {
   data() {
     return {
     }
+  },
+  computed: {
+    isLoggedIn() {
+      return this.$store.getters.isLoggedIn
+    }
   }
 }
 </script>

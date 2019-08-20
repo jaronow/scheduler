@@ -79,8 +79,8 @@ export default {
         this.createUser.phone = parseInt(this.createUser.phone)
         await authentication.register(this.createUser).then(res => {
           if (res.data.status === true) {
-            this.$store.dispatch('setUser', res.data.user)
             this.$store.dispatch('setToken', res.data.token)
+            this.$store.dispatch('setUser', res.data.user)
             this.$router.push({name: 'home'})
           }
         }).catch(err => {

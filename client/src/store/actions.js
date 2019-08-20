@@ -4,5 +4,8 @@ export default {
   },
   setUser ({commit}, user) {
     commit('setUser', user)
+  },
+  logout ({commit}) {
+    commit('logout')
   }
 };

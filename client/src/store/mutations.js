@@ -14,5 +14,11 @@ export default {
     } else {
       state.isAdmin = false
     }
+  },
+  logout (state) {
+    state.user = ''
+    state.token = ''
+    state.isLoggedIn = ''
+    state.isAdmin = ''
   }
 };

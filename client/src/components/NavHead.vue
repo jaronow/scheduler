@@ -13,10 +13,11 @@
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <Login v-if="!$store.state.isLoggedIn"/>
-          <b-dropdown text="User" class="m-2" right no-caret variant="info" v-if="$store.state.isLoggedIn">
-            <b-dropdown-item to="#">Profile</b-dropdown-item>
-            <b-dropdown-item to="#">Calendar</b-dropdown-item>
-            <b-dropdown-item to="#">Sign Out</b-dropdown-item>
+          <b-dropdown ref="user_dropdown" text="User" class="m-2" right no-caret variant="info" v-if="$store.state.isLoggedIn">
+            <b-dropdown-item class="user-profile" to="#">Profile</b-dropdown-item>
+            <b-dropdown-item class="user-calendar" to="#">Calendar</b-dropdown-item>
+            <b-dropdown-divider></b-dropdown-divider>
+            <b-button class="logout" variant="outline-primary" size="sm" @click="logout">Log Out</b-button>
           </b-dropdown>
         </b-navbar-nav >
       </b-collapse>
@@ -35,9 +36,23 @@ export default {
   data() {
     return {
     }
+  },
+  methods: {
+    logout() {
+      this.$refs.user_dropdown.hide(true)
+      this.$store.dispatch('logout').then(() => {
+        this.$router.push({name: 'home'})
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
+.user-profile, .user-calendar {
+  text-align: center;
+}
+.logout {
+  margin-left: 30%;
+}
 </style>
