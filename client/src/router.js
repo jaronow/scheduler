@@ -24,6 +24,30 @@ export default new Router({
       name: "register",
       component: () =>
         import("@/components/Register.vue")
+    },
+    {
+      path: "/calendar/:user",
+      name: "calendar",
+      component: () =>
+        import("@/components/Calendar.vue")
+    },
+    {
+      path: "/services",
+      name: "services",
+      component: () =>
+        import("@/components/Services.vue")
+    },
+    {
+      path: "/profile/:user",
+      name: "profile",
+      component: () =>
+        import("@/components/Profile.vue")
+    },
+    {
+      path: "/employees",
+      name: "employees",
+      component: () =>
+        import("@/components/Employees.vue")
     }
   ]
 });
