@@ -3,4 +3,4 @@ export default {
   token: null,
   isLoggedIn: false,
   isAdmin: false
-}
+};

@@ -12,16 +12,13 @@
           <b-nav-item to="about">About</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-nav-item-dropdown right no-caret v-if="loggedIn">
-            <template slot="button-content"><em>User</em></template>
+          <Login v-if="!$store.state.isLoggedIn"/>
+          <b-dropdown text="User" class="m-2" right no-caret variant="info" v-if="$store.state.isLoggedIn">
             <b-dropdown-item to="#">Profile</b-dropdown-item>
             <b-dropdown-item to="#">Calendar</b-dropdown-item>
             <b-dropdown-item to="#">Sign Out</b-dropdown-item>
-          </b-nav-item-dropdown>
+          </b-dropdown>
         </b-navbar-nav >
-        <b-navbar-nav class="ml-auto">
-          <Login v-if="!loggedIn"/>
-        </b-navbar-nav>
       </b-collapse>
     </b-navbar>
 </div>
@@ -37,7 +34,6 @@ export default {
   },
   data() {
     return {
-      loggedIn: false
     }
   }
 }
