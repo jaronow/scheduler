@@ -55,6 +55,11 @@ export default {
     }
   },
   methods: {
+    blankPhone() {
+      if (this.createUser.phone.length === '') {
+        this.createUser.phone = '0000000000'
+      }
+    },
     validate() {
       if (this.createUser.password !== this.confirm_password) {
         this.registerError = "Passwords DO NOT match"
@@ -67,6 +72,8 @@ export default {
       }
     },
     async register() {
+      if (this.createUser.phone === '') {
+        this.createUser.phone = '0000000000'
       let valid = this.validate()
       if (valid) {
         this.createUser.phone = parseInt(this.createUser.phone)
@@ -81,6 +88,7 @@ export default {
       } else {
         alert(this.registerError)
       }
+    }
     }
   }
 }

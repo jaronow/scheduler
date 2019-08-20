@@ -4,7 +4,7 @@ module.exports = {
   register (req, res, next) {
     const schema = {
       name: Joi.string(),
-      phone: Joi.number().max(9999999999).positive(),
+      phone: Joi.number().max(9999999999),
       email: Joi.string().email({ minDomainSegments: 2 }),
       password: Joi.string().regex(/^[a-zA-Z0-9]{8,32}$/),
       admin: Joi.boolean().insensitive()
