@@ -18,6 +18,7 @@ module.exports = {
         }
       })
       const validPassword = await user.comparePassword(password)
+      console.log(validPassword)
       if (!user || !validPassword) {
         return res.status(404).json({
           status: false,

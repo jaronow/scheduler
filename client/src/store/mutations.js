@@ -9,10 +9,15 @@ export default {
   },
   setUser (state, user) {
     state.user = user
-    if (user.admin === true) {
+    if (user.admin === true && user.employee === true) {
       state.isAdmin = true
+      state.isEmployee = true
+    } else if (user.employee === true) {
+      state.isAdmin = false
+      state.isEmployee = true
     } else {
       state.isAdmin = false
+      state.isEmployee = false
     }
   },
   logout (state) {
@@ -20,6 +25,6 @@ export default {
     state.token = ''
     state.isLoggedIn = ''
     state.isAdmin = ''
-    state.isEmployee: ''
+    state.isEmployee = ''
   }
 };
