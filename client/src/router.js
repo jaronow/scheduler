@@ -48,6 +48,12 @@ export default new Router({
       name: "employees",
       component: () =>
         import("@/components/Employees.vue")
+    },
+    {
+      path: "/employee/:id",
+      name: "employee",
+      component: () =>
+        import("@/components/SingleEmployee.vue")
     }
   ]
 });
