@@ -46,8 +46,9 @@ export default {
   methods: {
     async login() {
       await authentication.login(this.userLogin).then(res => {
-        if (res.data.message === true) {
-          localStorage.setItem('user', JSON.stringify(res.data.user))
+        if (res.data.status === true) {
+          this.$store.dispatch('setUser', res.data.user)
+          this.$store.dispatch('setToken', res.data.token)
         }
       }).catch(err => {
         alert(err.response.data.message)
