@@ -2,5 +2,6 @@ export default {
   user: '',
   token: '',
   isLoggedIn: '',
-  isAdmin: ''
+  isAdmin: '',
+  isEmployee: ''
 };

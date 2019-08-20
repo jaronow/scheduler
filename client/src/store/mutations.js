@@ -20,5 +20,6 @@ export default {
     state.token = ''
     state.isLoggedIn = ''
     state.isAdmin = ''
+    state.isEmployee: ''
   }
 };
