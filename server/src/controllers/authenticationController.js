@@ -24,6 +24,7 @@ module.exports = {
           message: 'Incorrect login credentials'
         })
       }
+      delete user.dataValues.password
       let selectedUser = user[0]
       let userPayload = {user: selectedUser}
       let token = jwtSignUser(userPayload)
@@ -43,6 +44,7 @@ module.exports = {
   async register (req, res) {
     try {
       const user = await User.create(req.body)
+      delete user.dataValues.password
       let selectedUser = user[0]
       let userPayload = {user: selectedUser}
       let token = jwtSignUser(userPayload)
