@@ -7,7 +7,7 @@ module.exports = {
       phone: Joi.number().max(9999999999),
       email: Joi.string().email({ minDomainSegments: 2 }),
       password: Joi.string().regex(/^[a-zA-Z0-9]{8,32}$/),
-      admin: Joi.boolean().insensitive(),
+      admin: Joi.boolean(),
       employee: Joi.boolean()
     }
     const {error, value} = Joi.validate(req.body, schema)
@@ -29,7 +29,6 @@ module.exports = {
           message: 'Something went wrong, try again or contact us'
         })
       }
-      console.log(error)
     } else {
       next()
     }
